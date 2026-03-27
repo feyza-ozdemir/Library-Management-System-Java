@@ -4,14 +4,14 @@ public class MyHashTable<Key, Value> {
     private HashEntry<Key, Value>[] table;
     private int size;
     private int capacity;
-    private static final int STUDENT_ID = 230315019;
+    private static final int STUDENT_ID = 123456789;
     
     public MyHashTable(int size){
         this.capacity = size;
         this.table = new HashEntry[capacity];
     }
     
-    //Calculates the hash index using the Student ID(230315019)
+    //Calculates the hash index using the Student ID(123456789)
     private int hash(Key key){
         if(key == null)
             return 0;

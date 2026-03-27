@@ -85,7 +85,7 @@ public class LibrarySystem {
             }
             //Prevent deletion if the member has active loans to avoid orphaned bookrecords.
             if(!memberToRemove.getBorrowedBooks().isEmpty()){
-                System.out.println("\nError: The member has borrowed books; these cannot be deleted.");
+                System.out.println("\nError: The member has borrowed books, these cannot be deleted.");
                 return;
             }
             members.remove(memberIDRemove);
@@ -264,7 +264,7 @@ public class LibrarySystem {
                                             if(returnedBook != null && returnerMember != null){
                                                 returnedBook.setAvailable(false);
                                                 returnerMember.addBorrowed(lastAction.getBookID());
-                                                System.out.println("Undo Successful: Return canceled, Book ID: " + lastAction.getBookID() + " ' is back with " + returnerMember.getName() + ".");
+                                                System.out.println("Undo Successful: Return cancelled, Book ID: " + lastAction.getBookID() + " is back with " + returnerMember.getName() + ".");
                                             }
                                             else{
                                                 System.out.println("Error: ...");
@@ -281,7 +281,7 @@ public class LibrarySystem {
             System.out.println("No borrowing data available yet.");
             return;
         }
-        //I use a temporary heap to extract values without destroying the original ppopularity data. 
+        //I use a temporary heap to extract values without destroying the original popularity data. 
         MyHeap tempHeap = new MyHeap();
         Book[] tempBooks = popularBooksHeap.getTopBooks();
         for(Book b : tempBooks){
@@ -289,7 +289,7 @@ public class LibrarySystem {
                 tempHeap.insert(b);
             }
         }
-        //lastPirnted prevents displaying the same book multiple times if it was borrowed multiple times.
+        //lastPrinted prevents displaying the same book multiple times if it was borrowed multiple times.
         int lastPrintedID = -1;
         int printedCount = 0;
         
@@ -301,7 +301,7 @@ public class LibrarySystem {
             
             if(popular.getBookID() != lastPrintedID){
                 printedCount++;
-                System.out.println(printedCount + ". " + popular.getTitle() + " (ID: " + popular.getBookID() + ") - Boorow Count: " + popular.getBorrowCount());
+                System.out.println(printedCount + ". " + popular.getTitle() + " (ID: " + popular.getBookID() + ") - Borrow Count: " + popular.getBorrowCount());
                 lastPrintedID = popular.getBookID();
             }
         }
